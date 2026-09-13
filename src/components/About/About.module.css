@@ -1,0 +1,97 @@
+.section {
+  padding: 120px 0;
+  background: var(--c-bg);
+  position: relative;
+}
+
+.topLine {
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-violet), transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.text p {
+  color: rgba(240, 238, 255, 0.7);
+  margin-bottom: 20px;
+  font-size: 0.97rem;
+  line-height: 1.8;
+}
+
+.text strong { color: var(--c-gold-lt); }
+
+.highlights {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid var(--c-border);
+  transition: all var(--transition);
+}
+
+.item:hover {
+  background: rgba(124, 58, 237, 0.12);
+  border-color: var(--c-border-lt);
+  transform: translateX(4px);
+}
+
+.icon { font-size: 1.5rem; flex-shrink: 0; }
+
+.item strong {
+  display: block;
+  color: var(--c-white);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.item p {
+  margin: 0 !important;
+  font-size: 0.82rem !important;
+  color: var(--c-muted) !important;
+}
+
+.emblemWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+  animation: rotateSlow 12s linear infinite;
+}
+
+.emblem {
+  border-radius: 50% !important;
+  object-fit: cover;
+  border: 2px solid var(--c-gold);
+  box-shadow: var(--glow-gold), 0 0 80px rgba(124, 58, 237, 0.3);
+  animation: floatY 4s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; gap: 48px; }
+  .emblemWrap { order: -1; }
+  .emblem { width: 240px !important; height: 240px !important; }
+  .glow { width: 300px; height: 300px; }
+}

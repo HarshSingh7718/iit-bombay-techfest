@@ -1,0 +1,107 @@
+.section {
+  padding: 120px 0;
+  background: var(--c-bg-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--c-border);
+  transition: all var(--transition);
+  overflow: hidden;
+  cursor: pointer;
+  perspective: 800px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.card:hover::before { opacity: 1; }
+.card:hover {
+  border-color: var(--c-border-lt);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+}
+
+.featured {
+  border-color: rgba(201, 162, 39, 0.3);
+  background: rgba(201, 162, 39, 0.04);
+}
+
+.featured::before {
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), transparent);
+}
+
+.glow {
+  position: absolute;
+  top: -50%; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent);
+  pointer-events: none;
+  transition: all 0.5s;
+}
+
+.card:hover .glow {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent);
+}
+
+.icon { font-size: 2.2rem; margin-bottom: 20px; }
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--c-white);
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: rgba(240, 238, 255, 0.6);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  color: var(--c-violet-lt);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-gold-lt);
+  transition: gap var(--transition);
+  text-decoration: none;
+}
+
+.link:hover { gap: 12px; }
+
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,119 @@
+.section {
+  padding: 120px 0;
+  background: var(--c-bg);
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.filter {
+  padding: 8px 22px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  letter-spacing: 0.04em;
+}
+
+.filter:hover, .filterActive {
+  background: var(--c-violet) !important;
+  border-color: var(--c-violet) !important;
+  color: #fff !important;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 28px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--c-border);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.4s ease both;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--c-violet), var(--c-blue));
+  transition: width var(--transition);
+}
+
+.card:hover {
+  border-color: var(--c-border-lt);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
+}
+
+.card:hover::after { width: 100%; }
+
+.num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: rgba(124, 58, 237, 0.2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-white);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.84rem;
+  color: var(--c-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prize {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-gold-lt);
+}
+
+.badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(61, 156, 248, 0.1);
+  border: 1px solid rgba(61, 156, 248, 0.3);
+  color: var(--c-blue);
+  font-size: 0.7rem;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .grid { grid-template-columns: 1fr; } }
