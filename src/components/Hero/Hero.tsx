@@ -3,6 +3,10 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.css';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Particle {
   x: number; y: number;
@@ -29,6 +33,37 @@ function createParticle(w: number, h: number): Particle {
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // GSAP Parallax
+  useEffect(() => {
+    if (!heroRef.current || !bgRef.current || !contentRef.current) return;
+    
+    gsap.to(bgRef.current, {
+      y: '30%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+
+    gsap.to(contentRef.current, {
+      y: '-25%',
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  }, []);
 
   // Particle canvas
   useEffect(() => {
@@ -165,8 +200,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className={styles.hero} id="hero">
-      <div className={styles.bg}>
+    <section className={styles.hero} id="hero" ref={heroRef}>
+      <div className={styles.bg} ref={bgRef}>
         <Image
           src="/hero_bg.jpg"
           alt="Aetherial Renaissance"
@@ -180,7 +215,7 @@ export default function Hero() {
 
       <canvas ref={canvasRef} className={styles.canvas} />
 
-      <div className={styles.content}>
+      <div className={styles.content} ref={contentRef}>
         <div className={styles.badge}>
           <span className={styles.dot} />
           Asia&apos;s Largest Science &amp; Technology Festival
@@ -194,6 +229,10 @@ export default function Hero() {
 
         <p className={styles.theme}>An Aetherial Renaissance</p>
         <p className={styles.host}>IIT Bombay &nbsp;&bull;&nbsp; January 2026</p>
+        <p className={styles.extraDesc}>
+          Join thousands of innovators and visionaries for a three-day celebration of science, technology, and human ingenuity. 
+          Step into the future and experience the renaissance of ideas.
+        </p>
 
         <div className={styles.actions}>
           <a href="#register" className="btn btn-primary">

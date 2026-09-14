@@ -1,5 +1,12 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './About.module.css';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const highlights = [
   { icon: '🌐', title: 'Global Reach',          desc: 'Participants from 190+ countries worldwide' },
@@ -8,8 +15,31 @@ const highlights = [
 ];
 
 export default function About() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const emblemRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current || !emblemRef.current) return;
+
+    gsap.fromTo(
+      emblemRef.current,
+      { y: 60, rotation: -5 },
+      {
+        y: -60,
+        rotation: 5,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
   return (
-    <section className={styles.section} id="about">
+    <section className={styles.section} id="about" ref={sectionRef}>
       <div className={styles.topLine} />
       <div className="container">
         <div className="section-header">
@@ -31,7 +61,12 @@ export default function About() {
             <p>
               Techfest 2026 celebrates <strong>An Aetherial Renaissance</strong> — a theme that bridges
               classical wisdom with the spark of cutting-edge technology. It&apos;s a convergence of art,
-              science, and imagination that invites us to rediscover the world anew.
+              science, and imagination that invites us to rediscover the world anew. From quantum computing
+              to interstellar exploration, we are the launchpad for tomorrow&apos;s breakthroughs.
+            </p>
+            <p>
+              For over two decades, Techfest has been the pinnacle of technological advancement and student
+              collaboration. Let the symphony of gears and the poetry of code inspire you to reach for the stars.
             </p>
 
             <div className={styles.highlights}>
@@ -47,7 +82,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className={styles.emblemWrap}>
+          <div className={styles.emblemWrap} ref={emblemRef}>
             <div className={styles.glow} />
             <Image
               src="/techfest_emblem.jpg"

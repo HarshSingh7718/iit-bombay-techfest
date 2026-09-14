@@ -106,8 +106,17 @@
   font-size: 0.9rem;
   color: var(--c-muted);
   letter-spacing: 0.1em;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.extraDesc {
+  font-size: 0.92rem;
+  color: rgba(240, 238, 255, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  animation: fadeUp 0.8s 0.35s ease both;
 }
 
 .actions {

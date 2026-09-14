@@ -23,6 +23,8 @@ const inter = Inter({
   display: 'swap',
 });
 
+import SmoothScroller from '@/components/SmoothScroller';
+
 export const metadata: Metadata = {
   title: 'Techfest 2026 | IIT Bombay — An Aetherial Renaissance',
   description:
@@ -42,7 +44,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${cinzel.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SmoothScroller>
+          {children}
+        </SmoothScroller>
+      </body>
     </html>
   );
 }
