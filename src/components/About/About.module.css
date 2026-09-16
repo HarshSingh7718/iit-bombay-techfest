@@ -6,8 +6,11 @@
 
 .topLine {
   position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 600px; height: 1px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 1px;
   background: linear-gradient(90deg, transparent, var(--c-violet), transparent);
 }
 
@@ -32,7 +35,9 @@
   line-height: 1.8;
 }
 
-.text strong { color: var(--c-gold-lt); }
+.text strong {
+  color: var(--c-gold-lt);
+}
 
 .highlights {
   margin-top: 40px;
@@ -58,7 +63,10 @@
   transform: translateX(4px);
 }
 
-.icon { font-size: 1.5rem; flex-shrink: 0; }
+.icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
 
 .item strong {
   display: block;
@@ -82,9 +90,14 @@
 
 .glow {
   position: absolute;
-  width: 400px; height: 400px;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.25) 0%,
+    transparent 70%
+  );
   animation: rotateSlow 12s linear infinite;
 }
 
@@ -97,12 +110,25 @@
 }
 
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: 1fr; gap: 48px; }
-  .emblemWrap { order: -1; }
-  .emblem { width: 240px !important; height: 240px !important; }
-  .glow { width: 300px; height: 300px; }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .emblemWrap {
+    order: -1;
+  }
+  .emblem {
+    width: 240px !important;
+    height: 240px !important;
+  }
+  .glow {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 @media (max-width: 640px) {
-  .section :global(.section-header) { margin-bottom: 48px; }
+  .section :global(.section-header) {
+    margin-bottom: 48px;
+  }
 }
